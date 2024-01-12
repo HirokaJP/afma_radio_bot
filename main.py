@@ -5,6 +5,7 @@ from datetime import time, timezone, timedelta
 import datetime
 import discord
 from discord.ext import commands, tasks
+from keep_alive import keep_alive
 
 JST = timezone(timedelta(hours=+9), "JST")
 
@@ -103,6 +104,7 @@ async def loop():
 
 
 try:
+  keep_alive()
   token = os.getenv("TOKEN") or ""
   if token == "":
     raise Exception("Please add your token to the Secrets pane.")
