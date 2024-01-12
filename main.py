@@ -108,6 +108,8 @@ try:
   token = os.getenv("TOKEN") or ""
   if token == "":
     raise Exception("Please add your token to the Secrets pane.")
+  
+  keep_alive()
   client.run(token)
 ##except discord.HTTPException as e:
 ##    if e.status == 429:
