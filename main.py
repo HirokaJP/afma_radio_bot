@@ -18,7 +18,7 @@ client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-  print('We have logged in as {0.user}'.format(client))
+  print('We have logged in as {0.user}'.format(client), flush=True)
   loop.start()
 
 
@@ -35,6 +35,7 @@ async def on_message(message):
 @tasks.loop(seconds=60)
 async def loop():
   now = datetime.datetime.now().astimezone(JST)
+  print(now, flush=True)
   #print(now.date().weekday())
   """
     Day
@@ -79,7 +80,7 @@ async def loop():
               users.append(user)
             # Iterate through the users
             for user in users:
-              print(f"User {user.name} ")
+              print(f"User {user.name} ", flush=True)
               user_list.append(user.mention)
           mention_str = ""
           unique_user_list = list(set(user_list))
@@ -107,6 +108,7 @@ try:
   keep_alive()
   token = os.getenv("TOKEN") or ""
   if token == "":
+    print("Please add your token to the Secrets pane.", flush=True)
     raise Exception("Please add your token to the Secrets pane.")
   
   keep_alive()
