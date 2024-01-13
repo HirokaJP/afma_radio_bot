@@ -28,13 +28,13 @@ async def on_message(message):
     return
 
   if message.content.startswith('$hello'):
-    await message.channel.send('Hello!')
+    await message.channel.send('Hello! from render')
 
 
 @tasks.loop(seconds=60)
 async def loop():
   now = datetime.datetime.now().astimezone(JST)
-  #print(now)
+  print(now)
   #print(now.date().weekday())
   """
     Day
